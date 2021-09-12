@@ -1,3 +1,16 @@
+## **Author**: Mohammad And Amer
+## **Version**: 1.0.1 
+
+## Name of feature: User Authentication with Auth0
+
+## Estimate of time needed to complete: 2 hours
+
+## Start time: 1.30
+
+## Finish time: 2.30 pm
+
+## Actual time needed to complete: 2 hours
+
 # Start your own "Can of Books" App
 
 This repository has starter code to begin work on creating your own online bookshelf.
