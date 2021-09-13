@@ -14,7 +14,7 @@ class Profile extends Component {
            <center> <Alert>{ isAuthenticated && <h2>Hello {user.name}</h2> }</Alert></center>
            <center><Alert>{isAuthenticated && <h3>your Email :  {user.email}</h3>}</Alert></center>
             {console.log(user)}
-            <center>{isAuthenticated && <img src="https://lh3.googleusercontent.com/a-/AOh14GjmZvJJFeYIETufdCEaJ9GR0TFmuPr5z_NpdvZqFQ=s96-c" alt='img' width='200px' height='200'/>}</center>
+            <center>{isAuthenticated && <img src={user.picture}alt='img' width='200px' height='200'/>}</center>
             </>
           ) 
     }
