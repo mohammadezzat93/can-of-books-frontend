@@ -2,6 +2,11 @@ import React from 'react';
 import Header from './Header';
 import IsLoadingAndError from './IsLoadingAndError';
 import Footer from './Footer';
+import LogoutButton from './LogoutButton';
+import Profile from './Profile';
+import Login from './Login';
+import MyFavoriteBooks from './BestBooks';
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -20,8 +25,17 @@ class App extends React.Component {
             <Switch>
               <Route exact path="/">
                 {/* TODO: if the user is logged in, render the `BestBooks` component, if they are not, render the `Login` component */}
+                <Login />
+                <LogoutButton />
               </Route>
               {/* TODO: add a route with a path of '/profile' that renders a `Profile` component */}
+              <Route path="/profile">
+              <Profile />
+              </Route>
+              <Route path="/BestBooks">
+              <MyFavoriteBooks />
+              </Route>
+
             </Switch>
             <Footer />
           </IsLoadingAndError>

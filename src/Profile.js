@@ -19,5 +19,4 @@ class Profile extends Component {
           ) 
     }
 }
-
 export default withAuth0(Profile);
