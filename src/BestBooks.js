@@ -63,6 +63,7 @@ import { withAuth0 } from '@auth0/auth0-react';
 import BookItem from './BookItem';
 import BookFormModal from './BookFormModal';
 import axios from 'axios';
+import UpdateFormModel from './UbdateFormModel'
 
 class MyFavoriteBooks extends React.Component {
 
@@ -70,7 +71,13 @@ class MyFavoriteBooks extends React.Component {
     super(props);
     this.state = {
       favBookArray: [],
-      showModel:false
+      showModel:false,
+      showModel2:false,
+      bookName : '',
+      description : '',
+      status : '',
+      book_id : ''
+
     }
   }
 
@@ -107,7 +114,8 @@ class MyFavoriteBooks extends React.Component {
       .post(`https://can-of-bookss.herokuapp.com/addBooks`, obj)
       .then(result => {
         this.setState({
-          favBookArray: result.data
+          favBookArray: result.data,
+        showModel:false
         })
       })
       .catch(err => {
@@ -133,6 +141,44 @@ class MyFavoriteBooks extends React.Component {
       })
   }
 
+  showUbdateForm =(item) => {
+    this.setState({
+      showModel2:true,
+      bookName : item.title,
+      description : item.description,
+      status: item.status,
+      book_id : item._id
+
+    })
+  }
+
+  ubdateBooks = (e) =>{
+    e.preventDefault();
+
+    const { user } = this.props.auth0;
+    const email = user.email;
+    const obj ={
+      bookName: e.target.bookName.value,
+      description: e.target.description.value,
+      status : e.target.status.value,
+      book_id :this.state.book_id,
+      email: email
+    }
+
+    axios
+    .put(`http://localhost:3010/updateBooks/${this.state.book_id}`, obj)
+    .then(result => {
+      this.setState({
+        favBookArray: result.data,
+        showModel2:false
+      })
+      console.log(result.data);
+    })
+    .catch(err => {
+      console.log('Error updating !?');
+    })
+    
+  }
 
   handleClose=()=>{
     this.setState({
@@ -143,6 +189,11 @@ class MyFavoriteBooks extends React.Component {
   closeModel = () => {
     this.setState({
       showModel: false
+    })
+  }
+  closeModel2 = () => {
+    this.setState({
+      showModel2: false
     })
   }
 
@@ -173,16 +224,31 @@ class MyFavoriteBooks extends React.Component {
               <BookItem
                 item={item}
                 deleteBook={this.deleteBook}
+                showUbdateForm={this.showUbdateForm}
+
               />
             )
           })
         }
         </Row>
-        <BookFormModal show={this.state.showModel}
-       handleClose={this.handleClose}
+
+        <BookFormModal 
+       show={this.state.showModel}
        addBook={this.addBook}
        closeModel={this.closeModel}
        />
+
+<UpdateFormModel 
+       handleClose={this.handleClose}
+       show ={this.state.showModel2}
+       closeModel2={this.closeModel2}
+       bookName={this.state.bookName}
+       description={this.state.description}
+       status = {this.state.status}
+       ubdateBooks = {this.ubdateBooks}
+       />
+
+       
         {/* <BookItem
           Book={this.state.favBookArray} 
           deleteBook = {this.deleteBook}

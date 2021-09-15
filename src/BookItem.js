@@ -55,7 +55,9 @@ class BookItem extends React.Component {
             <h1>{this.props.item.title}</h1>
             <h3>{this.props.item.description}</h3>
             </Card.Text>
-            <Button variant="warning" onClick={() => this.props.deleteBook(this.props.item._id)}>Delete</Button>
+            <Button variant="primary" onClick={() => this.props.deleteBook(this.props.item._id)}>Delete</Button>
+
+            <Button variant="primary" onClick={() => this.props.showUbdateForm(this.props.item)}>Update</Button>
             </Card.Body>
             <Card.Header>{this.props.item.status}</Card.Header>
       </Card>
