@@ -4,6 +4,9 @@
 ## **Author**: Mohammad
 ## **Version**: 1.0.2 
 
+## **Author**: Mohammad
+## **Version**: 1.0.3 
+
 
 ## Name of feature: User Authentication with Auth0
 
@@ -24,6 +27,16 @@
 ## Finish time: 5.30 pm
 
 ## Actual time needed to complete: 4 hours
+
+## Name of feature: CURD Update
+
+## Estimate of time needed to complete: 2 hours
+
+## Start time: 1.30
+
+## Finish time: 3.30 pm
+
+## Actual time needed to complete: 2 hours
 
 # Start your own "Can of Books" App
 
